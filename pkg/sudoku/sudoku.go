@@ -8,6 +8,12 @@ type MyStruct struct {
 	log *wails.CustomLogger
 }
 
+type cell struct {
+	rowNunmber int
+	colNumber  int
+	number int
+}
+
 // WailsInit .
 func (d *MyStruct) WailsInit(runtime *wails.Runtime) error {
 	d.log = runtime.Log.New("MyStruct")
@@ -25,15 +31,25 @@ func (d *MyStruct) DisplayArray() [9][9]int {
 		4,2,0,7,8,3,6,9,0,
 	}
 
-	var result [9][9]int
+	//var result [] cell
+	var result [9][9] int
 	x:= 0
-	for x < len(ListNumbers) {
+
+	for x < len(ListNumbers){
 
 		for i := 0; i < 9; i++ {
 
 			for j := 0; j < 9; j++ {
+
 				result[i][j] = ListNumbers[x]
-				//fmt.Print(result[i][j])
+				/*result = []cell{
+					cell{
+						rowNunmber: i,
+						colNumber: j,
+						number: ListNumbers[x],
+					},
+				}*/
+
 				x++
 			}
 			//fmt.Println();

@@ -8,6 +8,7 @@
 import sudoku from "./components/sudoku.vue";
 import "./assets/css/main.css";
 
+
 export default {
   name: "app",
   components: {

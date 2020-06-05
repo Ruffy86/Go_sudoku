@@ -1,36 +1,36 @@
 <template>
-    <div class="container">
-      <h1>
-      <table class="table-bordered" style="margin-left: auto; margin-right: auto;">
-        <tbody>
-        <tr v-for="item in message" v-bind:key="item" style="border-color: white; border-style: solid;">
-          <td v-for="article in item" v-bind:key="article" style="border-color: white; border-style: solid;">
-              <label v-if="article!=0">{{article}}</label>
-              <input type="number" v-if="article == 0" v-bind="userInput" v-model="userInput" style="height: 30px; width: 20px"/>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </h1>
+    <div id="app-sudoku">
+        <div class="container">
+            <h1>
+                <table class="table-bordered" style="margin-left: auto; margin-right: auto;">
+                    <tbody>
+                    <tr v-for="(item, itemIndex) in message" v-bind:key="itemIndex" style="border-color: white; border-style: solid;">
+                        <td v-for="(article, articleIndex) in item" :key="articleIndex" style="border-color: white; border-style: solid;">
+                            <label v-if="article!=0">{{article}}</label>
+                            <input type="text" v-if="article == 0" v-model="userInput.number[String(itemIndex) + String(articleIndex)]" style="height: 30px; width: 20px" />
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </h1>
 
-    <a @click="getMessage">Empezar!</a>
+            <a @click="getMessage">Empezar!</a>
 
-        <span>{{ userInput | json }}</span>
+            <span>{{ userInput }}</span>
 
+        </div>
     </div>
 </template>
 
 <script>
-    var container = new Vue({
-        el: '...',
-        data: {
-            userInput: []
-        }
-    })
+
 export default {
   data() {
     return {
       message: [],
+        userInput :{
+            number: []
+        }
     };
   },
   methods: {
